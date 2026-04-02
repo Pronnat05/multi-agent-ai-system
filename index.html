@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Agent AI System</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f5f5f5;
+        }
+        input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🤖 Multi-Agent AI Assistant</h1>
+
+<input type="text" id="query" placeholder="Enter your command..." />
+<br>
+<button onclick="sendQuery()">Execute</button>
+
+<div id="result"></div>
+
+<script>
+function sendQuery() {
+    const query = document.getElementById("query").value;
+
+    fetch(`https://multi-agent-921027421144.asia-south1.run.app/execute?query=${encodeURIComponent(query)}`)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("result").innerHTML =
+            "<b>Response:</b><br>" + JSON.stringify(data, null, 2);
+    });
+}
+</script>
+
+</body>
+</html>
